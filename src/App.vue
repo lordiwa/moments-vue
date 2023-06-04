@@ -27,6 +27,25 @@ const questions = [
   }
 ]
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDMjWGS-VyT-GBsu32--v2hzzEpElB95i0",
+  authDomain: "moments-vue.firebaseapp.com",
+  projectId: "moments-vue",
+  storageBucket: "moments-vue.appspot.com",
+  messagingSenderId: "945176305364",
+  appId: "1:945176305364:web:30fb6ccc9782f127ee2541"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
 </script>
 
 <template>
