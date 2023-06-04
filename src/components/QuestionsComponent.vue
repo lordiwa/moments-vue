@@ -12,7 +12,8 @@ const props = defineProps({
 
 const saveAnswers = ref((answer)=>{
   data.answers.push({'id':data.currentQuestionId, 'question':data.questions[data.currentQuestionId].question, 'answer':answer})
-  data.currentQuestionId ++
+  data.questions.length > data.currentQuestionId + 1 ? data.currentQuestionId ++ : data.readyToSave = true
+  data.currentAnswer = '';
   console.log(data.answers)
 })
 
@@ -20,7 +21,8 @@ let data = reactive({
   questions: props.jsonData,
   currentQuestionId: 0,
   answers:[],
-  currentAnswer:''
+  currentAnswer:'',
+  readyToSave: false
 })
 
 </script>
@@ -38,7 +40,8 @@ let data = reactive({
             </p>
           </template>
           <template #footer>
-            <Button icon="pi pi-check" label="Save" @click="saveAnswers(data.currentAnswer)" />
+            <Button v-if="!data.readyToSave" icon="pi pi-check" label="Siguiente" @click="saveAnswers(data.currentAnswer)" />
+            <Button v-if="data.readyToSave" icon="pi pi-check" label="Guardar" @click="$emit('push-item', data.answers)" />
           </template>
         </Card>
 </template>

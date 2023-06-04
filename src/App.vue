@@ -1,31 +1,4 @@
 <script setup>
-import QuestionsComponent from './components/QuestionsComponent.vue'
-const questions = [
-  {
-    'id': 1,
-    'question':'¿Cómo te sientes?'
-  },
-  {
-    'id': 2,
-    'question':'¿Cuéntame más sobre este momento? (Preguntas sobre el momento)'
-  },
-  {
-    'id': 3,
-    'question':'¿Cuándo fue la última vez que esto no fue un problema?'
-  },
-  {
-    'id': 4,
-    'question':'Aquí se deben identificar los momentos importantes'
-  },
-  {
-    'id': 5,
-    'question':'¿Cómo te sientes ahora?'
-  },
-  {
-    'id': 6,
-    'question':'Aqui se entregan herramientas'
-  }
-]
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
@@ -49,7 +22,18 @@ const app = initializeApp(firebaseConfig);
 </script>
 
 <template>
-  <QuestionsComponent :jsonData="questions" />
+  <div class="grid">
+    <div class="col-12" style="max-height: 50px">
+      <div id="nav" style="max-height: 50px">
+        <router-link to="/intro">Intro</router-link> |
+        <router-link to="/mainMenu">Main Menu</router-link> |
+        <router-link to="/moment">Moment</router-link>
+      </div>
+    </div>
+    <div class="col-12">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <style scoped>
